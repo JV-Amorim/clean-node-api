@@ -12,5 +12,6 @@ export const makeSignUpController = (): Controller => {
   const accountMongoRepository = new AccountMongoRepository()
   const dbAddAccount = new DbAddAccount(bcryptAdapter, accountMongoRepository);
   const signUpController = new SignUpController(emailValidatorAdapter, dbAddAccount);
-  return new LogControllerDecorator(signUpController);
+  // TODO - Add logErrorRepository instance:
+  return new LogControllerDecorator(signUpController, null);
 };
